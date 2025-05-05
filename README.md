@@ -1,4 +1,4 @@
-<h2>DevCalc-API</h2>
+<h2> DevCalc-API </h2>
 
 **DevCalc** é uma API Rest em java que disponibiliza
 operações matemáticas simples. Sendo a mesma utilizada para validar o funcionamento de pipelines automatizadas.
