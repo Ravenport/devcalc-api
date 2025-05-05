@@ -1,0 +1,23 @@
+name: CI Pipeline
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@4
+      - name: Install Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '23'
+          distribution: 'oracle'
+      - name: Run Maven
+        run: mvn clean install
+      - name: Run Tests
+        run: mvn test
