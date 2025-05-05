@@ -1,0 +1,12 @@
+name: Pipeline Check
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  show-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pipeline Message
+        run: echo "Pipeline Iniciado com sucesso!"
