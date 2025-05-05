@@ -41,6 +41,11 @@
             <artifactId>javalin</artifactId>
             <version>6.6.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.36</version>
+        </dependency>
     </dependencies>
 
     <properties>
