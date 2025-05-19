@@ -33,7 +33,7 @@ public class CalculatorServiceTest {
         CalculatorService service = new CalculatorService();
         Double result = values.getFirstValue() * values.getSecondValue();
         Assertions.assertThat(service.multiply(values)).isEqualTo(result);
-        
+
     }
 
     @Property
