@@ -6,11 +6,20 @@ on:
     paths:
       - 'src/**'
   push:
-    branches:
-      - main
-    paths:
-      - 'src/**'
 jobs:
+  checkstyle:
+    name: checkstyle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          java-version: '23'
+          distribution: 'oracle'
+      - uses: dbelyaev/action-checkstyle@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          checkstyle_config: google_checks.xml
   build:
     runs-on: ubuntu-latest
     steps:
