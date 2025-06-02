@@ -4,6 +4,7 @@ on:
 
 env:
   STAGE_WORKFLOW: "workflow"
+  STAGE_TEST_ISSUE: "Issue TP"
 
 jobs:
   build:
@@ -26,3 +27,39 @@ jobs:
         env:
           STAGE_STEP: "step" 
         run: echo "WORKFLOW - $STAGE_WORKFLOW / JOB - $STAGE_JOB / STEP - $STAGE_STEP" 
+  create-issue:
+    if: $STAGE_TEST_ISSUE == "Issue TP"
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      repository: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Create Issue
+        uses: JasonEtco/create-an-issue@v2
+        with:
+          title: "Issue para TP"
+          body: "Essa $STAGE_TEST_ISSUE foi criada"
+          labels: "bug,automation"
+          assignees: "Ravenport"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  dont-create-issue:
+    if: $STAGE_TEST_ISSUE != "Issue TP"
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      repository: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Create Issue
+        uses: JasonEtco/create-an-issue@v2
+        with:
+          title: "Issue para TP"
+          body: "Essa $STAGE_TEST_ISSUE foi criada"
+          labels: "bug,automation"
+          assignees: "Ravenport"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
