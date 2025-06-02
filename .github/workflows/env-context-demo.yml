@@ -1,9 +1,15 @@
 name: Check Env
 on:
   push
+
+env:
+  STAGE_WORKFLOW: "workflow"
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      STAGE_JOB: "job" 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -12,5 +18,11 @@ jobs:
         with:
           java-version: '23'
           distribution: 'oracle'
-      - name: Check Java Version
-        run: java --version
+      - name: Check User
+        run: echo "Usuario - ${{ github.actor }}" 
+      - name: Check OS
+        run: echo "Usuario - ${{ runner.os }}" 
+      - name: Check Env Variable
+        env:
+          STAGE_STEP: "step" 
+        run: echo "WORKFLOW - $STAGE_WORKFLOW / JOB - $STAGE_JOB / STEP - $STAGE_STEP" 
