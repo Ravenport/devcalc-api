@@ -4,7 +4,6 @@ on:
 
 env:
   STAGE_WORKFLOW: "workflow"
-  STAGE_TEST_ISSUE: "Issue TP"
 
 jobs:
   build:
@@ -39,7 +38,7 @@ jobs:
         uses: JasonEtco/create-an-issue@v2
         with:
           title: "Issue para TP"
-          body: "Essa $STAGE_TEST_ISSUE foi criada"
+          body: "Essa ${{ vars.STAGE_TEST_ISSUE }} foi criada"
           labels: "bug,automation"
           assignees: "Ravenport"
         env:
@@ -56,7 +55,7 @@ jobs:
         uses: JasonEtco/create-an-issue@v2
         with:
           title: "Issue para TP"
-          body: "Essa $STAGE_TEST_ISSUE foi criada"
+          body: "Essa ${{ vars.STAGE_TEST_ISSUE }} foi criada"
           labels: "bug,automation"
           assignees: "Ravenport"
         env:
