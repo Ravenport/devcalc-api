@@ -28,7 +28,7 @@ jobs:
           STAGE_STEP: "step" 
         run: echo "WORKFLOW - $STAGE_WORKFLOW / JOB - $STAGE_JOB / STEP - $STAGE_STEP" 
   create-issue:
-    if: {{ env.$STAGE_TEST_ISSUE == 'Issue TP' }}
+    if: {{ env.STAGE_TEST_ISSUE == 'Issue TP' }}
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -45,7 +45,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   dont-create-issue:
-    if: {{ env.$STAGE_TEST_ISSUE != 'Issue TP' }}
+    if: {{ env.STAGE_TEST_ISSUE != 'Issue TP' }}
     runs-on: ubuntu-latest
     permissions:
       issues: write
